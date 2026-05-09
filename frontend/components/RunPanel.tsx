@@ -7,6 +7,7 @@ import { TraceLog } from "./TraceLog";
 import { Scorecard } from "./Scorecard";
 import {
   fetchRun,
+  isMockJob,
   startRun,
   subscribeStream,
   type StartRunResponse,
@@ -39,6 +40,7 @@ export function RunPanel({ personas }: Props) {
   const [scorecard, setScorecard] = useState<ICPScorecard | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [running, setRunning] = useState(false);
+  const [isRecorded, setIsRecorded] = useState(false);
 
   const nodeStates: Record<NodeName, NodeStatus> = useMemo(() => {
     const s = { ...INITIAL_NODE_STATES };
@@ -115,6 +117,7 @@ export function RunPanel({ personas }: Props) {
     setEvents([]);
     setScorecard(null);
     setRun(null);
+    setIsRecorded(false);
     setRunning(true);
     try {
       const r = await startRun({
@@ -123,6 +126,7 @@ export function RunPanel({ personas }: Props) {
         persona_text: showCustom ? customText.trim() : null,
       });
       setRun(r);
+      setIsRecorded(isMockJob(r.job_id));
     } catch (err) {
       setError((err as Error).message);
       setRunning(false);
@@ -220,6 +224,26 @@ export function RunPanel({ personas }: Props) {
           )}
         </div>
       </form>
+
+      {/* RECORDED RUN BANNER, only when live backend unreachable */}
+      {isRecorded && (running || events.length > 0) && (
+        <div className="px-4 py-2.5 border border-[var(--color-violet)] bg-[var(--color-bg-2)] rounded-md flex items-center gap-3">
+          <span className="stamp stamp-violet">Recorded</span>
+          <span className="text-[12px] text-[var(--color-fg-dim)] font-mono">
+            Live backend paused. Replaying a recorded run with realistic timing
+            and trace events.{" "}
+            <a
+              href="https://github.com/AmirD10224/ops-agent"
+              target="_blank"
+              rel="noreferrer"
+              className="text-[var(--color-cyan)] hover:underline"
+            >
+              View source on GitHub
+            </a>
+            .
+          </span>
+        </div>
+      )}
 
       {/* KPI strip, visible during/after run */}
       {(running || events.length > 0) && (
