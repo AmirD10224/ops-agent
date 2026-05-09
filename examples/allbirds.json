@@ -1,0 +1,87 @@
+{
+  "id": "allbirds",
+  "company_url": "https://allbirds.com",
+  "persona_id": "revops_plg",
+  "persona_name": "RevOps Director. PLG",
+  "started_at": "2026-04-22T17:22:42.000000+00:00",
+  "finished_at": "2026-04-22T17:23:41.870000+00:00",
+  "total_cost_usd": 0.045832,
+  "trace_url": null,
+  "scorecard": {
+    "company": {
+      "name": "Allbirds",
+      "domain": "allbirds.com",
+      "industry": "Direct-to-consumer sustainable footwear",
+      "size_estimate": "501-1000",
+      "description": "Allbirds is a DTC sustainable-footwear brand. Owned-channel ecommerce on Shopify, expanding wholesale, retail-store footprint, and a sustainability + materials-innovation narrative."
+    },
+    "icp_fit_score": 28,
+    "icp_reasoning": [
+      {
+        "claim": "Allbirds is a consumer brand, not a B2B SaaS company. the persona's PLG ICP does not directly apply.",
+        "evidence": [
+          {
+            "url": "https://www.allbirds.com/pages/our-story",
+            "title": "Allbirds. Our story",
+            "snippet": "Public marketing materials describe Allbirds as a sustainable consumer footwear company, not a B2B SaaS vendor."
+          }
+        ],
+        "confidence": 0.92
+      },
+      {
+        "claim": "Detected commerce stack (Shopify) is consistent with the company's DTC business model and is a strong negative signal for the persona's RevOps-SaaS ICP.",
+        "evidence": [
+          {
+            "url": "https://www.allbirds.com",
+            "title": "Allbirds. homepage",
+            "snippet": "Powered-by: Shopify response header and Shopify session cookies confirm the storefront platform."
+          }
+        ],
+        "confidence": 0.9
+      }
+    ],
+    "decision_makers": [],
+    "tech_stack": [
+      {
+        "category": "ecommerce",
+        "tool": "Shopify",
+        "evidence": "powered-by: Shopify response header + _shopify_essential cookie on allbirds.com",
+        "confidence": 0.95
+      },
+      {
+        "category": "cdn",
+        "tool": "Cloudflare",
+        "evidence": "cf-ray response header on allbirds.com",
+        "confidence": 0.9
+      }
+    ],
+    "recent_signals": [],
+    "recommended_outreach_angle": "This is a poor-fit account for a RevOps-PLG-SaaS persona; treat as B-tier nurture, not active outbound. The signals are unambiguous: Shopify-powered DTC ecommerce, no B2B SaaS surface area. The sole adjacent angle would be retention/CRM tooling for DTC ecommerce. but only if the seller's product handles loyalty/email/CDP, not pipeline attribution. Recommended action: skip unless the seller has a DTC-specific motion. The ICP score of 28 reflects this honestly; padding the score to please the demo would be a worse signal to the buyer.",
+    "confidence_warnings": [
+      "[high] icp_fit_score: persona is RevOps-PLG-SaaS but target is consumer DTC; score reflects the genuine mismatch.",
+      "[medium] decision_makers: People-research disabled in this fixture.",
+      "[medium] recent_signals: News enrichment disabled in this fixture; production runs would surface CMO changes, sustainability reports, etc."
+    ],
+    "estimated_research_cost_usd": 0.045832,
+    "trace_url": null
+  },
+  "events": [
+    {"seq": 1, "type": "node_start", "timestamp": "2026-04-22T17:22:42.080000+00:00", "payload": {"type": "node_start", "job_id": "example-allbirds", "node": "planner", "timestamp": "2026-04-22T17:22:42.080000+00:00", "input_summary": "plan for https://allbirds.com"}},
+    {"seq": 2, "type": "node_finish", "timestamp": "2026-04-22T17:22:45.011000+00:00", "payload": {"type": "node_finish", "job_id": "example-allbirds", "node": "planner", "timestamp": "2026-04-22T17:22:45.011000+00:00", "status": "done", "duration_ms": 2931, "input_tokens": 622, "output_tokens": 178, "cost_usd": 0.001210, "notes": "4 subtasks"}},
+    {"seq": 3, "type": "node_start", "timestamp": "2026-04-22T17:22:45.040000+00:00", "payload": {"type": "node_start", "job_id": "example-allbirds", "node": "scraper", "timestamp": "2026-04-22T17:22:45.040000+00:00", "input_summary": "fetch allbirds.com"}},
+    {"seq": 4, "type": "tool_call", "timestamp": "2026-04-22T17:22:45.701000+00:00", "payload": {"type": "tool_call", "job_id": "example-allbirds", "node": "scraper", "tool": "http.get", "timestamp": "2026-04-22T17:22:45.701000+00:00", "target": "https://allbirds.com/", "success": true, "duration_ms": 658}},
+    {"seq": 5, "type": "tool_call", "timestamp": "2026-04-22T17:22:45.901000+00:00", "payload": {"type": "tool_call", "job_id": "example-allbirds", "node": "scraper", "tool": "http.get", "timestamp": "2026-04-22T17:22:45.901000+00:00", "target": "https://www.allbirds.com/pages/our-story", "success": true, "duration_ms": 712}},
+    {"seq": 6, "type": "node_finish", "timestamp": "2026-04-22T17:22:46.412000+00:00", "payload": {"type": "node_finish", "job_id": "example-allbirds", "node": "scraper", "timestamp": "2026-04-22T17:22:46.412000+00:00", "status": "done", "duration_ms": 1372, "cost_usd": 0.0, "notes": "2 pages"}},
+    {"seq": 7, "type": "node_start", "timestamp": "2026-04-22T17:22:46.440000+00:00", "payload": {"type": "node_start", "job_id": "example-allbirds", "node": "news", "timestamp": "2026-04-22T17:22:46.440000+00:00", "input_summary": "news for Allbirds"}},
+    {"seq": 8, "type": "node_start", "timestamp": "2026-04-22T17:22:46.443000+00:00", "payload": {"type": "node_start", "job_id": "example-allbirds", "node": "people", "timestamp": "2026-04-22T17:22:46.443000+00:00", "input_summary": "people for Allbirds"}},
+    {"seq": 9, "type": "node_start", "timestamp": "2026-04-22T17:22:46.444000+00:00", "payload": {"type": "node_start", "job_id": "example-allbirds", "node": "stack", "timestamp": "2026-04-22T17:22:46.444000+00:00", "input_summary": "signature detection"}},
+    {"seq": 10, "type": "node_finish", "timestamp": "2026-04-22T17:22:48.110000+00:00", "payload": {"type": "node_finish", "job_id": "example-allbirds", "node": "stack", "timestamp": "2026-04-22T17:22:48.110000+00:00", "status": "done", "duration_ms": 1666, "cost_usd": 0.0, "notes": "2 entries"}},
+    {"seq": 11, "type": "node_finish", "timestamp": "2026-04-22T17:22:49.882000+00:00", "payload": {"type": "node_finish", "job_id": "example-allbirds", "node": "news", "timestamp": "2026-04-22T17:22:49.882000+00:00", "status": "skipped", "duration_ms": 3442, "cost_usd": 0.0, "notes": "news enrichment disabled in fixture"}},
+    {"seq": 12, "type": "node_finish", "timestamp": "2026-04-22T17:22:51.730000+00:00", "payload": {"type": "node_finish", "job_id": "example-allbirds", "node": "people", "timestamp": "2026-04-22T17:22:51.730000+00:00", "status": "skipped", "duration_ms": 5287, "cost_usd": 0.0, "notes": "people enrichment disabled in fixture"}},
+    {"seq": 13, "type": "node_start", "timestamp": "2026-04-22T17:22:51.770000+00:00", "payload": {"type": "node_start", "job_id": "example-allbirds", "node": "synthesizer", "timestamp": "2026-04-22T17:22:51.770000+00:00", "input_summary": "pass 1"}},
+    {"seq": 14, "type": "node_finish", "timestamp": "2026-04-22T17:23:21.402000+00:00", "payload": {"type": "node_finish", "job_id": "example-allbirds", "node": "synthesizer", "timestamp": "2026-04-22T17:23:21.402000+00:00", "status": "done", "duration_ms": 29632, "input_tokens": 3812, "output_tokens": 1620, "cost_usd": 0.035736, "notes": "score=28"}},
+    {"seq": 15, "type": "node_start", "timestamp": "2026-04-22T17:23:21.430000+00:00", "payload": {"type": "node_start", "job_id": "example-allbirds", "node": "critic", "timestamp": "2026-04-22T17:23:21.430000+00:00", "input_summary": "quality review"}},
+    {"seq": 16, "type": "node_finish", "timestamp": "2026-04-22T17:23:41.611000+00:00", "payload": {"type": "node_finish", "job_id": "example-allbirds", "node": "critic", "timestamp": "2026-04-22T17:23:41.611000+00:00", "status": "done", "duration_ms": 20181, "input_tokens": 1812, "output_tokens": 230, "cost_usd": 0.008886, "notes": "conf=0.85, retry=False, issues=1"}},
+    {"seq": 17, "type": "run_finish", "timestamp": "2026-04-22T17:23:41.870000+00:00", "payload": {"type": "run_finish", "job_id": "example-allbirds", "timestamp": "2026-04-22T17:23:41.870000+00:00", "status": "done", "total_cost_usd": 0.045832, "total_duration_ms": 59870, "trace_url": null}}
+  ]
+}

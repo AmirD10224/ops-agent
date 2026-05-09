@@ -1,0 +1,48 @@
+name: eval
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "offline | live"
+        required: true
+        default: "offline"
+      limit:
+        description: "Max examples (0 = all)"
+        required: false
+        default: "0"
+      judge:
+        description: "Run LLM judge"
+        type: boolean
+        default: false
+
+jobs:
+  run-eval:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "0.5.5"
+          enable-cache: true
+      - run: uv pip install --python "${pythonLocation}/bin/python" -e '.'
+
+      - name: Run eval
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+        run: |
+          uv run --python "${pythonLocation}/bin/python" python -m evals.run \
+            --mode ${{ github.event.inputs.mode }} \
+            --limit ${{ github.event.inputs.limit }} \
+            ${{ github.event.inputs.judge == 'true' && '--judge' || '' }}
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results-${{ github.event.inputs.mode }}
+          path: evals/results/

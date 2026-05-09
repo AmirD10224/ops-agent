@@ -1,0 +1,131 @@
+{
+  "id": "linear",
+  "company_url": "https://linear.app",
+  "persona_id": "ae_series_b_saas",
+  "persona_name": "AE. Series B SaaS",
+  "started_at": "2026-04-22T17:14:08.220000+00:00",
+  "finished_at": "2026-04-22T17:14:53.871000+00:00",
+  "total_cost_usd": 0.054143,
+  "trace_url": null,
+  "scorecard": {
+    "company": {
+      "name": "Linear",
+      "domain": "linear.app",
+      "industry": "Issue tracking and project management SaaS",
+      "size_estimate": "201-500",
+      "description": "Linear builds an issue-tracking and project-management product purpose-built for software teams. Native macOS-grade UX, magic-link auth, Cycles for sprint cadence, and a fast keyboard-driven workflow."
+    },
+    "icp_fit_score": 78,
+    "icp_reasoning": [
+      {
+        "claim": "Engineering-led product DNA aligns with the persona's win condition (engineering-heavy mid-market companies running modern data stacks).",
+        "evidence": [
+          {
+            "url": "https://linear.app/about",
+            "title": "About Linear",
+            "snippet": "Public materials describe Linear as built by software engineers for software teams; the homepage and about page emphasize craft-oriented engineering culture."
+          }
+        ],
+        "confidence": 0.78
+      },
+      {
+        "claim": "Open headcount across engineering, product, design, and go-to-market suggests a 200–500 size band. the sweet spot for a $50–250k ACV motion.",
+        "evidence": [
+          {
+            "url": "https://linear.app/careers",
+            "title": "Linear. Careers",
+            "snippet": "Careers page lists active roles across engineering, product, design, and go-to-market, consistent with mid-stage growth."
+          }
+        ],
+        "confidence": 0.6
+      },
+      {
+        "claim": "Customer logos referenced on the marketing site indicate a buyer profile that matches the persona's existing customer base.",
+        "evidence": [
+          {
+            "url": "https://linear.app/customers",
+            "title": "Linear. Customer stories",
+            "snippet": "Customer stories surface modern software companies as named users."
+          }
+        ],
+        "confidence": 0.55
+      }
+    ],
+    "decision_makers": [],
+    "tech_stack": [
+      {
+        "category": "framework",
+        "tool": "Next.js",
+        "evidence": "x-nextjs-cache and x-nextjs-prerender response headers on linear.app",
+        "confidence": 0.9
+      },
+      {
+        "category": "cdn",
+        "tool": "Cloudflare",
+        "evidence": "server: cloudflare and cf-ray headers on linear.app",
+        "confidence": 0.95
+      },
+      {
+        "category": "analytics",
+        "tool": "PostHog",
+        "evidence": "Content-Security-Policy on linear.app permits app.posthog.com",
+        "confidence": 0.7
+      },
+      {
+        "category": "monitoring",
+        "tool": "Sentry",
+        "evidence": "Content-Security-Policy on linear.app permits o415358.ingest.sentry.io",
+        "confidence": 0.7
+      },
+      {
+        "category": "payments",
+        "tool": "Stripe",
+        "evidence": "Content-Security-Policy on linear.app permits js.stripe.com",
+        "confidence": 0.7
+      },
+      {
+        "category": "other",
+        "tool": "Algolia",
+        "evidence": "Content-Security-Policy on linear.app permits 9RXBCYQ6DV-dsn.algolia.net",
+        "confidence": 0.65
+      }
+    ],
+    "recent_signals": [
+      {
+        "date": null,
+        "headline": "Active changelog cadence on linear.app/changelog",
+        "url": "https://linear.app/changelog",
+        "buyer_relevance": "Frequent shipping cadence is a positive signal for an ICP that values mature engineering process. it makes a build-vs-buy conversation easier.",
+        "confidence": 0.55
+      }
+    ],
+    "recommended_outreach_angle": "Two angles worth testing: (1) Linear's public engineering culture (homepage, /about, careers page) maps cleanly to the persona's engineering-heavy ICP. open with a one-liner referencing the size signal from /careers and the engineering-led build-product narrative. (2) The detected stack (Next.js + Cloudflare + PostHog + Sentry + Stripe) means any tooling pitch must integrate with that surface, not replace it. Lead with a 15-minute working session offer rather than a pitch deck. engineering-led buyers prefer hands-on conversations.",
+    "confidence_warnings": [
+      "[medium] decision_makers: People-research disabled in this fixture. production runs would surface buying-committee candidates from public-snippet search with confidence scoring."
+    ],
+    "estimated_research_cost_usd": 0.054143,
+    "trace_url": null
+  },
+  "events": [
+    {"seq": 1, "type": "node_start", "timestamp": "2026-04-22T17:14:08.300000+00:00", "payload": {"type": "node_start", "job_id": "example-linear", "node": "planner", "timestamp": "2026-04-22T17:14:08.300000+00:00", "input_summary": "plan for https://linear.app"}},
+    {"seq": 2, "type": "node_finish", "timestamp": "2026-04-22T17:14:11.812000+00:00", "payload": {"type": "node_finish", "job_id": "example-linear", "node": "planner", "timestamp": "2026-04-22T17:14:11.812000+00:00", "status": "done", "duration_ms": 3512, "input_tokens": 612, "output_tokens": 184, "cost_usd": 0.001226, "notes": "4 subtasks"}},
+    {"seq": 3, "type": "node_start", "timestamp": "2026-04-22T17:14:11.860000+00:00", "payload": {"type": "node_start", "job_id": "example-linear", "node": "scraper", "timestamp": "2026-04-22T17:14:11.860000+00:00", "input_summary": "fetch linear.app"}},
+    {"seq": 4, "type": "tool_call", "timestamp": "2026-04-22T17:14:12.450000+00:00", "payload": {"type": "tool_call", "job_id": "example-linear", "node": "scraper", "tool": "http.get", "timestamp": "2026-04-22T17:14:12.450000+00:00", "target": "https://linear.app/", "success": true, "duration_ms": 580}},
+    {"seq": 5, "type": "tool_call", "timestamp": "2026-04-22T17:14:12.621000+00:00", "payload": {"type": "tool_call", "job_id": "example-linear", "node": "scraper", "tool": "http.get", "timestamp": "2026-04-22T17:14:12.621000+00:00", "target": "https://linear.app/about", "success": true, "duration_ms": 740}},
+    {"seq": 6, "type": "tool_call", "timestamp": "2026-04-22T17:14:12.870000+00:00", "payload": {"type": "tool_call", "job_id": "example-linear", "node": "scraper", "tool": "http.get", "timestamp": "2026-04-22T17:14:12.870000+00:00", "target": "https://linear.app/careers", "success": true, "duration_ms": 990}},
+    {"seq": 7, "type": "node_finish", "timestamp": "2026-04-22T17:14:13.044000+00:00", "payload": {"type": "node_finish", "job_id": "example-linear", "node": "scraper", "timestamp": "2026-04-22T17:14:13.044000+00:00", "status": "done", "duration_ms": 1184, "cost_usd": 0.0, "notes": "5 pages"}},
+    {"seq": 8, "type": "node_start", "timestamp": "2026-04-22T17:14:13.080000+00:00", "payload": {"type": "node_start", "job_id": "example-linear", "node": "news", "timestamp": "2026-04-22T17:14:13.080000+00:00", "input_summary": "news for Linear"}},
+    {"seq": 9, "type": "node_start", "timestamp": "2026-04-22T17:14:13.082000+00:00", "payload": {"type": "node_start", "job_id": "example-linear", "node": "people", "timestamp": "2026-04-22T17:14:13.082000+00:00", "input_summary": "people for Linear"}},
+    {"seq": 10, "type": "node_start", "timestamp": "2026-04-22T17:14:13.084000+00:00", "payload": {"type": "node_start", "job_id": "example-linear", "node": "stack", "timestamp": "2026-04-22T17:14:13.084000+00:00", "input_summary": "signature detection"}},
+    {"seq": 11, "type": "tool_call", "timestamp": "2026-04-22T17:14:14.010000+00:00", "payload": {"type": "tool_call", "job_id": "example-linear", "node": "news", "tool": "tavily.search", "timestamp": "2026-04-22T17:14:14.010000+00:00", "target": "Linear funding announcement 2026", "success": true, "duration_ms": 920}},
+    {"seq": 12, "type": "tool_call", "timestamp": "2026-04-22T17:14:14.802000+00:00", "payload": {"type": "tool_call", "job_id": "example-linear", "node": "people", "tool": "tavily.search", "timestamp": "2026-04-22T17:14:14.802000+00:00", "target": "\"Linear\" CEO site:linkedin.com/in", "success": true, "duration_ms": 1718}},
+    {"seq": 13, "type": "node_finish", "timestamp": "2026-04-22T17:14:14.880000+00:00", "payload": {"type": "node_finish", "job_id": "example-linear", "node": "stack", "timestamp": "2026-04-22T17:14:14.880000+00:00", "status": "done", "duration_ms": 1796, "cost_usd": 0.0, "notes": "6 entries"}},
+    {"seq": 14, "type": "node_finish", "timestamp": "2026-04-22T17:14:16.330000+00:00", "payload": {"type": "node_finish", "job_id": "example-linear", "node": "news", "timestamp": "2026-04-22T17:14:16.330000+00:00", "status": "done", "duration_ms": 3250, "cost_usd": 0.0, "notes": "1 signal, 3 queries"}},
+    {"seq": 15, "type": "node_finish", "timestamp": "2026-04-22T17:14:18.005000+00:00", "payload": {"type": "node_finish", "job_id": "example-linear", "node": "people", "timestamp": "2026-04-22T17:14:18.005000+00:00", "status": "skipped", "duration_ms": 4923, "cost_usd": 0.0, "notes": "people enrichment disabled in fixture"}},
+    {"seq": 16, "type": "node_start", "timestamp": "2026-04-22T17:14:18.040000+00:00", "payload": {"type": "node_start", "job_id": "example-linear", "node": "synthesizer", "timestamp": "2026-04-22T17:14:18.040000+00:00", "input_summary": "pass 1"}},
+    {"seq": 17, "type": "node_finish", "timestamp": "2026-04-22T17:14:42.760000+00:00", "payload": {"type": "node_finish", "job_id": "example-linear", "node": "synthesizer", "timestamp": "2026-04-22T17:14:42.760000+00:00", "status": "done", "duration_ms": 24720, "input_tokens": 4621, "output_tokens": 1880, "cost_usd": 0.042063, "notes": "score=78"}},
+    {"seq": 18, "type": "node_start", "timestamp": "2026-04-22T17:14:42.800000+00:00", "payload": {"type": "node_start", "job_id": "example-linear", "node": "critic", "timestamp": "2026-04-22T17:14:42.800000+00:00", "input_summary": "quality review"}},
+    {"seq": 19, "type": "node_finish", "timestamp": "2026-04-22T17:14:53.701000+00:00", "payload": {"type": "node_finish", "job_id": "example-linear", "node": "critic", "timestamp": "2026-04-22T17:14:53.701000+00:00", "status": "done", "duration_ms": 10901, "input_tokens": 2018, "output_tokens": 320, "cost_usd": 0.010854, "notes": "conf=0.82, retry=False, issues=1"}},
+    {"seq": 20, "type": "run_finish", "timestamp": "2026-04-22T17:14:53.871000+00:00", "payload": {"type": "run_finish", "job_id": "example-linear", "timestamp": "2026-04-22T17:14:53.871000+00:00", "status": "done", "total_cost_usd": 0.054143, "total_duration_ms": 45651, "trace_url": null}}
+  ]
+}

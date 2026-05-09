@@ -1,0 +1,80 @@
+{
+  "id": "faire",
+  "company_url": "https://faire.com",
+  "persona_id": "revops_plg",
+  "persona_name": "RevOps Director. PLG",
+  "started_at": "2026-04-22T17:18:11.000000+00:00",
+  "finished_at": "2026-04-22T17:19:05.412000+00:00",
+  "total_cost_usd": 0.060007,
+  "trace_url": null,
+  "scorecard": {
+    "company": {
+      "name": "Faire",
+      "domain": "faire.com",
+      "industry": "B2B wholesale marketplace",
+      "size_estimate": "501-1000",
+      "description": "Faire is a B2B wholesale marketplace connecting independent retailers with brands and makers. Self-serve onboarding for buyers, account-managed motion for top brands, and a financial product layer (net-60 terms, free returns)."
+    },
+    "icp_fit_score": 58,
+    "icp_reasoning": [
+      {
+        "claim": "Hybrid self-serve + account-managed motion partially matches the persona's PLG-with-sales-assist target.",
+        "evidence": [
+          {
+            "url": "https://faire.com",
+            "title": "Faire. wholesale marketplace",
+            "snippet": "Public marketing surface describes a self-serve product layer combined with dedicated account management for high-volume sellers."
+          }
+        ],
+        "confidence": 0.62
+      },
+      {
+        "claim": "Marketplace economics differ from a pure SaaS ICP. pipeline-attribution problems are real but instrumentation is non-traditional.",
+        "evidence": [
+          {
+            "url": "https://faire.com",
+            "title": "Faire. wholesale marketplace",
+            "snippet": "Multiple GMV-driven funnels for brands and retailers, not a single contract-based ARR model."
+          }
+        ],
+        "confidence": 0.5
+      }
+    ],
+    "decision_makers": [],
+    "tech_stack": [
+      {
+        "category": "cdn",
+        "tool": "Cloudflare",
+        "evidence": "cf-ray response header on faire.com",
+        "confidence": 0.95
+      }
+    ],
+    "recent_signals": [],
+    "recommended_outreach_angle": "This is a borderline-fit account; treat the outbound carefully. The marketplace economics make a pure SaaS RevOps pitch tricky. most named-account RevOps tooling assumes contract ARR, not GMV/take-rate. If the seller's product handles marketplace pipeline (brand acquisition + retailer activation funnels), the conversation is easier. Recommended opener: ask whether RevOps owns retailer-acquisition attribution or whether that lives in growth/marketing. the answer determines whether the seller is in the right room. Without a Tavily-backed news/people enrichment pass, this fixture stops short of a specific named outreach.",
+    "confidence_warnings": [
+      "[high] icp_fit_score: borderline match. persona is RevOps-PLG-SaaS but target is a marketplace; score reflects mismatch.",
+      "[medium] decision_makers: People-research disabled in this fixture.",
+      "[medium] tech_stack: Faire's bot-protection limits header-based detection; production runs would surface more signals via JS-rendered scraping."
+    ],
+    "estimated_research_cost_usd": 0.060007,
+    "trace_url": null
+  },
+  "events": [
+    {"seq": 1, "type": "node_start", "timestamp": "2026-04-22T17:18:11.020000+00:00", "payload": {"type": "node_start", "job_id": "example-faire", "node": "planner", "timestamp": "2026-04-22T17:18:11.020000+00:00", "input_summary": "plan for https://faire.com"}},
+    {"seq": 2, "type": "node_finish", "timestamp": "2026-04-22T17:18:14.110000+00:00", "payload": {"type": "node_finish", "job_id": "example-faire", "node": "planner", "timestamp": "2026-04-22T17:18:14.110000+00:00", "status": "done", "duration_ms": 3090, "input_tokens": 624, "output_tokens": 192, "cost_usd": 0.001267, "notes": "4 subtasks"}},
+    {"seq": 3, "type": "node_start", "timestamp": "2026-04-22T17:18:14.150000+00:00", "payload": {"type": "node_start", "job_id": "example-faire", "node": "scraper", "timestamp": "2026-04-22T17:18:14.150000+00:00", "input_summary": "fetch faire.com"}},
+    {"seq": 4, "type": "tool_call", "timestamp": "2026-04-22T17:18:14.770000+00:00", "payload": {"type": "tool_call", "job_id": "example-faire", "node": "scraper", "tool": "http.get", "timestamp": "2026-04-22T17:18:14.770000+00:00", "target": "https://faire.com/", "success": true, "duration_ms": 612}},
+    {"seq": 5, "type": "node_finish", "timestamp": "2026-04-22T17:18:15.510000+00:00", "payload": {"type": "node_finish", "job_id": "example-faire", "node": "scraper", "timestamp": "2026-04-22T17:18:15.510000+00:00", "status": "done", "duration_ms": 1360, "cost_usd": 0.0, "notes": "1 page reachable; bot-protection limited additional fetches"}},
+    {"seq": 6, "type": "node_start", "timestamp": "2026-04-22T17:18:15.540000+00:00", "payload": {"type": "node_start", "job_id": "example-faire", "node": "news", "timestamp": "2026-04-22T17:18:15.540000+00:00", "input_summary": "news for Faire"}},
+    {"seq": 7, "type": "node_start", "timestamp": "2026-04-22T17:18:15.541000+00:00", "payload": {"type": "node_start", "job_id": "example-faire", "node": "people", "timestamp": "2026-04-22T17:18:15.541000+00:00", "input_summary": "people for Faire"}},
+    {"seq": 8, "type": "node_start", "timestamp": "2026-04-22T17:18:15.542000+00:00", "payload": {"type": "node_start", "job_id": "example-faire", "node": "stack", "timestamp": "2026-04-22T17:18:15.542000+00:00", "input_summary": "signature detection"}},
+    {"seq": 9, "type": "node_finish", "timestamp": "2026-04-22T17:18:17.330000+00:00", "payload": {"type": "node_finish", "job_id": "example-faire", "node": "stack", "timestamp": "2026-04-22T17:18:17.330000+00:00", "status": "done", "duration_ms": 1788, "cost_usd": 0.0, "notes": "1 entry"}},
+    {"seq": 10, "type": "node_finish", "timestamp": "2026-04-22T17:18:18.802000+00:00", "payload": {"type": "node_finish", "job_id": "example-faire", "node": "news", "timestamp": "2026-04-22T17:18:18.802000+00:00", "status": "skipped", "duration_ms": 3262, "cost_usd": 0.0, "notes": "news enrichment disabled in fixture"}},
+    {"seq": 11, "type": "node_finish", "timestamp": "2026-04-22T17:18:20.715000+00:00", "payload": {"type": "node_finish", "job_id": "example-faire", "node": "people", "timestamp": "2026-04-22T17:18:20.715000+00:00", "status": "skipped", "duration_ms": 5174, "cost_usd": 0.0, "notes": "people enrichment disabled in fixture"}},
+    {"seq": 12, "type": "node_start", "timestamp": "2026-04-22T17:18:20.760000+00:00", "payload": {"type": "node_start", "job_id": "example-faire", "node": "synthesizer", "timestamp": "2026-04-22T17:18:20.760000+00:00", "input_summary": "pass 1"}},
+    {"seq": 13, "type": "node_finish", "timestamp": "2026-04-22T17:18:50.880000+00:00", "payload": {"type": "node_finish", "job_id": "example-faire", "node": "synthesizer", "timestamp": "2026-04-22T17:18:50.880000+00:00", "status": "done", "duration_ms": 30120, "input_tokens": 4920, "output_tokens": 2210, "cost_usd": 0.047910, "notes": "score=58"}},
+    {"seq": 14, "type": "node_start", "timestamp": "2026-04-22T17:18:50.901000+00:00", "payload": {"type": "node_start", "job_id": "example-faire", "node": "critic", "timestamp": "2026-04-22T17:18:50.901000+00:00", "input_summary": "quality review"}},
+    {"seq": 15, "type": "node_finish", "timestamp": "2026-04-22T17:19:05.230000+00:00", "payload": {"type": "node_finish", "job_id": "example-faire", "node": "critic", "timestamp": "2026-04-22T17:19:05.230000+00:00", "status": "done", "duration_ms": 14329, "input_tokens": 2210, "output_tokens": 280, "cost_usd": 0.010830, "notes": "conf=0.7, retry=False, issues=2"}},
+    {"seq": 16, "type": "run_finish", "timestamp": "2026-04-22T17:19:05.412000+00:00", "payload": {"type": "run_finish", "job_id": "example-faire", "timestamp": "2026-04-22T17:19:05.412000+00:00", "status": "done", "total_cost_usd": 0.060007, "total_duration_ms": 54392, "trace_url": null}}
+  ]
+}

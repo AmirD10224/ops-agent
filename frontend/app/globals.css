@@ -1,0 +1,295 @@
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+@source "../components/**/*.{ts,tsx}";
+
+@theme {
+  /* ─── Restrained operator palette · warm amber primary ─────── *\
+   * Pitch slate base · single warm amber accent.
+   * Subtle semantic tones (mint=ok, rose=fail, blue-grey=info).
+   * No rainbow. Variable names kept for component compat.
+  \* ──────────────────────────────────────────────────────────── */
+
+  /* Surface, pitch slate */
+  --color-bg: #060810;
+  --color-bg-2: #0a0d18;
+  --color-panel: #0c0f1a;
+  --color-panel-2: #11151f;
+  --color-panel-hi: #161a26;
+  --color-line: #1a1e2c;
+  --color-line-2: #252a38;
+  --color-line-hi: #353b4e;
+  --color-border: #1a1e2c;
+
+  /* Text */
+  --color-fg: #ecedf3;
+  --color-fg-dim: #aab1c0;
+  --color-fg-mute: #6e7686;
+  --color-fg-faint: #3d434f;
+
+  /* Single warm primary, amber gold (was electric cyan) */
+  --color-cyan: #f0b366;
+  --color-cyan-bright: #fbcc8c;
+  --color-cyan-dim: #b08043;
+
+  /* Subtle cool secondary, used SPARINGLY (was magenta) */
+  --color-magenta: #f0b366;
+  --color-magenta-bright: #fbcc8c;
+
+  /* Info/secondary blue-grey (was electric violet) */
+  --color-violet: #8fa3c4;
+  --color-violet-bright: #b3c2dc;
+
+  /* Success mint, used only for verified/done (was chartreuse) */
+  --color-chartreuse: #5cf2c7;
+  --color-chartreuse-bright: #7ff5d3;
+
+  --color-emerald: #5cf2c7;
+
+  /* Semantic */
+  --color-success: var(--color-emerald);
+  --color-warn: #fbbf24;
+  --color-bad: #f87171;
+  --color-fail: #f87171;
+  --color-accent: var(--color-cyan);
+  --color-accent-2: var(--color-emerald);
+
+  /* Type */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0; padding: 0;
+  min-height: 100dvh;
+}
+
+body {
+  background-image:
+    radial-gradient(ellipse 70% 50% at 14% -8%, rgba(240, 179, 102, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 86% 105%, rgba(143, 163, 196, 0.03) 0%, transparent 60%),
+    radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.025) 1px, transparent 0);
+  background-size: 100% 100%, 100% 100%, 28px 28px;
+  background-attachment: fixed;
+}
+
+::selection { background: var(--color-cyan); color: var(--color-bg); }
+
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-line-2); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-line-hi); }
+
+.tabular { font-variant-numeric: tabular-nums slashed-zero; }
+
+.display {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+}
+
+.display-mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums slashed-zero;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-fg-mute);
+}
+
+.label-mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ─── Panels ────────────────────────────────────────────────────── */
+.panel {
+  background: var(--color-panel);
+  border: 1px solid var(--color-line);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.panel-hi {
+  background: var(--color-panel-2);
+  border: 1px solid var(--color-line-2);
+  border-radius: 8px;
+}
+
+/* Panel halos removed, felt overdone. Panels are panels. */
+.panel-glow-cyan       { /* noop */ }
+.panel-glow-magenta    { /* noop */ }
+.panel-glow-violet     { /* noop */ }
+.panel-glow-chartreuse { /* noop */ }
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--color-line);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-fg-mute);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.018) 0%, transparent 100%);
+}
+
+.panel-header::before {
+  content: "";
+  width: 6px; height: 6px;
+  background: var(--color-cyan);
+  box-shadow: 0 0 8px var(--color-cyan);
+  border-radius: 1px;
+}
+.panel-header-magenta::before    { background: var(--color-cyan); box-shadow: 0 0 8px var(--color-cyan); }
+.panel-header-violet::before     { background: var(--color-violet); box-shadow: 0 0 8px var(--color-violet); }
+.panel-header-chartreuse::before { background: var(--color-chartreuse); box-shadow: 0 0 8px var(--color-chartreuse); }
+
+/* Iridescent collapsed to single warm gradient */
+.iris-text {
+  background: linear-gradient(
+    100deg,
+    var(--color-cyan) 0%,
+    var(--color-cyan-bright) 50%,
+    var(--color-cyan) 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  animation: iris-shift 9s linear infinite;
+}
+
+@keyframes iris-shift {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Section rule */
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0 16px;
+}
+.section-rule__chip {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-cyan);
+  padding: 3px 10px;
+  border: 1px solid var(--color-cyan);
+  border-radius: 4px;
+  background: rgba(240, 179, 102, 0.06);
+}
+.section-rule__title {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--color-fg);
+}
+.section-rule__line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-line-hi) 0%, transparent 100%);
+}
+
+/* Confidence pill */
+.conf-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* Stamps */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid currentColor;
+  color: var(--color-cyan);
+  border-radius: 3px;
+}
+.stamp-cyan       { color: var(--color-cyan); }
+.stamp-magenta    { color: var(--color-cyan); }
+.stamp-violet     { color: var(--color-violet-bright); }
+.stamp-chartreuse { color: var(--color-chartreuse); }
+.stamp-emerald    { color: var(--color-emerald); }
+
+/* Subtle glows */
+.glow-cyan       { text-shadow: 0 0 18px rgba(240, 179, 102, 0.32); }
+.glow-magenta    { text-shadow: 0 0 18px rgba(240, 179, 102, 0.32); }
+.glow-violet     { text-shadow: 0 0 18px rgba(143, 163, 196, 0.28); }
+.glow-chartreuse { text-shadow: 0 0 18px rgba(92, 242, 199, 0.32); }
+.glow-emerald    { text-shadow: 0 0 18px rgba(92, 242, 199, 0.32); }
+
+/* Animations */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.4; }
+}
+.pulse { animation: pulse 1.6s ease-in-out infinite; }
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.ticker { animation: ticker 70s linear infinite; }
+
+@keyframes flash-cyan {
+  0%   { background: rgba(240, 179, 102, 0.14); }
+  100% { background: transparent; }
+}
+.flash-cyan { animation: flash-cyan 0.9s ease-out; }
+
+@keyframes fade-up {
+  0%   { opacity: 0; transform: translate3d(0, 8px, 0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+.fade-up { animation: fade-up 0.6s cubic-bezier(0.19, 1, 0.22, 1) both; }
+
+@keyframes flow-stream {
+  0%   { stroke-dashoffset: 24; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
